@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Jeu de Roles{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{asset('./css/style.css')}}"/>
         {% endblock %}
@@ -11,26 +11,11 @@
 
     {% block body %}
         <body>
-            {% block play %}
-                <nav id='play'>
-                    <ul>
-                        <li class="btn-start"><a href="{{ path('home')}}">Play Now !</a></li>
-                        <li><button>UIFDJCFGILUHGKJHTDFGKj</button></li>
-                        <li class="btn-create"><a href="{{ path('home')}}">Create character</a></li>
-                    </ul>
-                </nav>
-            {% endblock %}
-
-            {% block navProfil %}
-                <nav>
-                    <ul>
-                        <li><a href="{{ path('home')}}">Infos</a></li>
-                    </ul>
-                </nav>
-            {% endblock %}
-
         </body>
     {% endblock %}
-{% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="./script/script.js"></script>
+                {% endblock %}
 
-</html>
+    </html>

@@ -8,18 +8,82 @@ and open the template in the editor.
     Author     : romain-ruperez
 */
 
-.btn-start{
-    background-color: greenyellow;
-    border: solid 2px black;
-    
+
+body{
+    visibility: hidden;
 }
 
-.btn-create{
-    background-color: orangered;
-    border: solid 2px black;
+button{
+    position:relative;
+    border-radius: 0;
+    background-color: #6d6;
+    width:300px;
+    height:75px;
+    font-size: 3em;
+    line-height: 75px;
+    vertical-align: middle;
+    transition:0.5s;
 }
 
-#play{
-    text-align: center;
-    display: inline;
+button:hover{
+    background-color: rgba(0,199,27,1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.8);
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+
+form{
+    display: none;
+}
+
+
+#selection{
+    position:relative;
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    padding: 20px;
+    transition:0.5s;
+}
+
+#selection:hover{
+    box-shadow: 0 0 7px rgba(0,0,0,0.9);
+}
+
+#selection > input{
+    width:100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+#selection > input[type='text']{
+    background-color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+    border: 0px;
+    border-bottom: 2px solid rgba(0,0,0,0.7);
+    transition:0.5s;
+}
+
+#selection > input[type='text']:hover{
+    background-color: rgba(70,100,200,0.4);
+    border-bottom: 2px solid rgba(0,0,0,0.4);
+}
+
+#selection > input[type='text']:focus{
+    background-color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+    border : 0px;
+    border-bottom: 2px solid rgba(0,0,0,0.7);
+}
+
+#selection > input[type='submit']{
+    background-color: rgba(255,58,13,0.9);
+    color: white;
+    transition:0.5s;
+}
+
+#selection > input[type='submit']:hover{
+    background-color: rgba(255,58,13,1);
+    color: white;
+    letter-spacing: 3px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.9);
+    font-size:20px;
 }

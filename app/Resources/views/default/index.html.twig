@@ -1,16 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <body>
+        <button type="button">START</button>
+            <form id="selection">
+                <input type="text" placeholder="email joueur 1"/>
+                <input type="text" placeholder="email joueur 2"/>
+                <input type="text" placeholder="email joueur 3"/>
+                <input type="text" placeholder="email joueur 4"/>
+                <input type="submit" value="Valider"/>
+            </form>
         
-
-                    
-        
-    </body>
-    {% block play %}
-        {{ parent()}}
-
-    {% endblock %}
-    {% block navProfil %}
-        {{ parent()}}
-    {% endblock %}
 {% endblock %}
