@@ -11,6 +11,7 @@ and open the template in the editor.
 
 body{
     visibility: hidden;
+    background-color: #DEDEDE;
 }
 
 button{
@@ -37,12 +38,37 @@ form{
 }
 
 
+/*couleur des inputs*/
+.c1 {
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,0,0,0.6));
+
+}
+.c2 {
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,255,0,0.6));
+}
+.c3 {
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,0,255,0.6));
+}
+.c4 {
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,0,0.6));
+
+}
+
+
+
+
+
+
+
 #selection{
     position:relative;
+  background: linear-gradient(to bottom right, rgba(255,255,255,1), rgba(0,0,0,0.1));
     width: 300px;
     box-shadow: 0 0 5px rgba(0,0,0,0.6);
     padding: 20px;
     transition:0.5s;
+            border-left: 1px solid rgba(255,255,255,0.8);
+            border-top: 1px solid rgba(255,255,255,0.8);
 }
 
 #selection:hover{
@@ -50,40 +76,43 @@ form{
 }
 
 #selection > input{
-    width:100%;
-    background-color: rgba(0,0,0,0.7);
+    width:90%;
+
+    /*background-color: rgba(0,0,0,0.7);*/
 }
 
 #selection > input[type='text']{
-    background-color: rgba(255,255,255,0.4);
+    /*background-color: rgba(255,255,255,0.4);*/
     margin-bottom: 10px;
-    border: 0px;
-    border-bottom: 2px solid rgba(0,0,0,0.7);
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(0,0,0,0.2);
     transition:0.5s;
 }
 
 #selection > input[type='text']:hover{
-    background-color: rgba(70,100,200,0.4);
-    border-bottom: 2px solid rgba(0,0,0,0.4);
+  background-color: white;
+      transition:0.5s;
 }
 
 #selection > input[type='text']:focus{
-    background-color: rgba(255,255,255,0.4);
-    margin-bottom: 10px;
-    border : 0px;
-    border-bottom: 2px solid rgba(0,0,0,0.7);
+
+
+    border-bottom: 1px solid black;
 }
 
 #selection > input[type='submit']{
     background-color: rgba(255,58,13,0.9);
     color: white;
     transition:0.5s;
+            border-left: 1px solid white;
 }
 
 #selection > input[type='submit']:hover{
     background-color: rgba(255,58,13,1);
     color: white;
     letter-spacing: 3px;
-    box-shadow: 0 0 7px rgba(0,0,0,0.9);
-    font-size:20px;
+    font-size:25px;
 }
+

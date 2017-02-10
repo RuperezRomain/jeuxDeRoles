@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-        <button type="button">START</button>
-            <form id="selection" method="POST" action="{{path('addPlayers')}}">
-                <input type="text" name="j1" placeholder="email joueur 1"/>
-                <input type="text" name="j2" placeholder="email joueur 2"/>
-                <input type="text" name="j3" placeholder="email joueur 3"/>
-                <input type="text" name="j4" placeholder="email joueur 4"/>
-                <input type="submit" value="Valider"/>
-            </form>
-        
+    <button type="button">START</button>
+
+    <form id="selection" method="POST" action="{{path('addPlayers')}}">
+        {% for i in 0..3 %}
+            <input class="{{ cycle(['c1','c2','c3','c4'],loop.index) }}"
+                   type="text" 
+                   name="{{ cycle(['j1','j2','j3','j4'],loop.index) }}" 
+                   placeholder=" Email "/>
+        {% endfor %}
+        <input type="submit" value="Valider"/>
+    </form>
+
+
 {% endblock %}
