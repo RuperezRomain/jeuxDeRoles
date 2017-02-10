@@ -21,7 +21,17 @@ class DefaultController extends Controller
      */
     public function creationPersonnage(Request $request)
     {
+        $form = $this-> createForm(PersonnageType::class);
+        $numeroDuJoueur = $request->getSession()->get('actual');
+        $numeroDuJoueurEnChaineDeCaractere = strval($numeroDuJoueur);
+        $joueur = $request->getSession()->get("j" . $numeroDuJoueurEnChaineDeCaractere);
         
-        return $this->render('default/creationPersonnage.html.twig');
+        
+        return $this->render('default/creationPersonnage.html.twig',array(
+            "j" => $joueur,
+            "joueur" => $request->getSession()->get("j" . strval($request->getSession()->get('actual'))),
+            "formulaire" => $form->createView()
+                ));
+        
     }
 }

@@ -9,11 +9,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Joueur;
+use AppBundle\Entity\Personnage;
+use AppBundle\Entity\Stats;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Description of PlayersController
@@ -42,36 +44,101 @@ class PlayersController extends Controller {
             //stockage de la valeur dans la variable email
             $email = $r->get('j' . strval($i));
 
-            //on va chercher l'adresse  mail de l'user dans la DB
-            $checkEmail = $entityManager->getRepository(Joueur::class)->findByEmail($email);
+
 
             if ($email != null) {
+
+                //on va chercher l'adresse  mail de l'user dans la DB
+                $checkEmail = $entityManager->getRepository(Joueur::class)->findByEmail($email);
 
                 // si un email est trouvé
                 if ($checkEmail != null) {
                     // on récupere la session correspondant a l'email
-                    $r->getSession()->set('j' . strval($i), $checkEmail);
-                    // on redirige sur la homepage
-                    return $this->redirectToRoute('homepage');
-//                    return new Response($email . " possède déjà un compte");
+                    $joueur=$checkEmail[0];
                 } else {
                     // si nouveau joueur
                     $joueur = new Joueur();
                     $joueur->setEmail($email);
                     $entityManager->persist($joueur);
-                    // mise en session du joueur
-                    $r->getSession()->set('j' . strval($i), $joueur);
-                    return $this->redirectToRoute('createPerso');
                 }
+                // mise en session du joueur
+                $r->getSession()->set('j' . strval($i), $joueur);
             }
         }
-
         $entityManager->flush();
-
-
-
-        // m'a permis de verifier les valeur du formulaire
-//        return new Response($r->get("j1"));
+        $r->getSession()->set('actual', 1);
+        return $this->redirectToRoute('createPerso');
     }
 
+    // m'a permis de verifier les valeur du formulaire
+//        return new Response($r->get("j1"));
+
+    /**
+     * @Route("/personnage/create", name="createPerso")
+     * @Template("default/creationPersonnage.html.twig")
+     */
+    public function createCharacter(Request $r) {
+        $em = $this->getDoctrine()->getManager();
+//        $finalStats = $em->getRepository('AppBundle')
+        $personnage = new Personnage;
+        $form = $this->createForm('AppBundle\Form\PersonnageType', $personnage);
+        $form->handleRequest($r);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            //creation d'un nouvel obj"et stat
+            $stats = new Stats();
+            //mise a jour de ses valeurs avec les valeurs stats de la classe de la race
+            //enregistrement de nos nouvelles stats et ajout des stats dans le personnage
+            $stats->setPv($personnage->getRace()->getStats()->getPv() + $personnage->getRace()->getStats()->getPv());
+            $stats->setAtt($personnage->getRace()->getStats()->getAtt() + $personnage->getRace()->getStats()->getAtt());
+            $stats->setMov($personnage->getRace()->getStats()->getMov() + $personnage->getRace()->getStats()->getMov());
+            $stats->setDef($personnage->getRace()->getStats()->getDef() + $personnage->getRace()->getStats()->getDef());
+
+
+            $personnage->setStats($stats);
+
+
+
+            $em->persist($personnage);
+            $em->persist($stats);
+            $r->getSession()->set('actual', 1);
+            $em->flush();
+        }
+
+        return array("formulaire" => $form->createView());
+    }
+
+    /**
+     * 
+     * @Route("perso/create",name="savePersonnage")
+     * @param Request $r
+     */
+    public function savePersonnage(Request $r){
+        $em = $this->getDoctrine()->getManager();
+        $personnage = new Personnage();
+                $form = $this->createForm(\AppBundle\Form\PersonnageType::class, $personnage);
+                $form->handleRequest($r);
+                $em->persist($personnage->majStats());
+                $em->persist($personnage);
+                $em->flush;
+                $this->switchPlayer($r);
+               
+    }
+    
+    /** 
+     * Doit etre appelée par la validation de la création du personnage precendent !
+     * @param Request $r
+     * @return type
+     */
+//    public function switchPlayer(Request $r) {
+//        $next = $r->getSession()->get('actuel') + 1;
+//        if ($r->getSession()->has('j' . strval($next))) {
+//            $r->getSession()->set('actuel', $next);
+//            return $this->redirectToRoute('createPerso');
+//        }else{
+//            return $this->redirectToRoute('game');
+//        }
+//    }
+    
 }

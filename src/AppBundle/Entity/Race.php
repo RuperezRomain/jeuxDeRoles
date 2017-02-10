@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="race")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RaceRepository")
  */
-class Race
-{
+class Race {
+
     /**
      * @var int
      *
@@ -36,14 +36,12 @@ class Race
      */
     private $stats;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +52,7 @@ class Race
      *
      * @return Race
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -66,8 +63,7 @@ class Race
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -78,8 +74,7 @@ class Race
      *
      * @return Race
      */
-    public function setStats($stats)
-    {
+    public function setStats($stats) {
         $this->stats = $stats;
 
         return $this;
@@ -90,9 +85,12 @@ class Race
      *
      * @return \stdClass
      */
-    public function getStats()
-    {
+    public function getStats() {
         return $this->stats;
     }
-}
 
+    public function __toString() {
+        return $this->getNom();
+    }
+
+}

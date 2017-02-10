@@ -10,7 +10,7 @@ and open the template in the editor.
 
 
 body{
-    visibility: hidden;
+    /*visibility: hidden;*/
     background-color: #DEDEDE;
 }
 
@@ -34,23 +34,47 @@ button:hover{
 }
 
 form{
-    display: none;
+    /*display: none;*/
+    position:relative;
+    background: linear-gradient(to bottom right, rgba(255,255,255,1), rgba(0,0,0,0.1));
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    padding: 20px;
+    transition:0.5s;
+    border-left: 1px solid rgba(255,255,255,0.8);
+    border-top: 1px solid rgba(255,255,255,0.8);
+}
+
+form:hover{
+    box-shadow: 0 0 7px rgba(0,0,0,0.9);
+}
+
+form > input{
+    background-color: rgba(255,58,13,0.9);
+    color: white;
+    transition:0.5s;
+    border-left: 1px solid white;
+}
+form > input:hover{
+    background-color: rgba(255,58,13,1);
+    color: white;
+    font-size:25px;
 }
 
 
 /*couleur des inputs*/
 .c1 {
-  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,0,0,0.6));
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,0,0,0.6));
 
 }
 .c2 {
-  background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,255,0,0.6));
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,255,0,0.6));
 }
 .c3 {
-  background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,0,255,0.6));
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,0,255,0.6));
 }
 .c4 {
-  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,0,0.6));
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,0,0.6));
 
 }
 
@@ -62,13 +86,13 @@ form{
 
 #selection{
     position:relative;
-  background: linear-gradient(to bottom right, rgba(255,255,255,1), rgba(0,0,0,0.1));
+    background: linear-gradient(to bottom right, rgba(255,255,255,1), rgba(0,0,0,0.1));
     width: 300px;
     box-shadow: 0 0 5px rgba(0,0,0,0.6);
     padding: 20px;
     transition:0.5s;
-            border-left: 1px solid rgba(255,255,255,0.8);
-            border-top: 1px solid rgba(255,255,255,0.8);
+    border-left: 1px solid rgba(255,255,255,0.8);
+    border-top: 1px solid rgba(255,255,255,0.8);
 }
 
 #selection:hover{
@@ -92,8 +116,8 @@ form{
 }
 
 #selection > input[type='text']:hover{
-  background-color: white;
-      transition:0.5s;
+    background-color: white;
+    transition:0.5s;
 }
 
 #selection > input[type='text']:focus{
@@ -106,7 +130,7 @@ form{
     background-color: rgba(255,58,13,0.9);
     color: white;
     transition:0.5s;
-            border-left: 1px solid white;
+    border-left: 1px solid white;
 }
 
 #selection > input[type='submit']:hover{

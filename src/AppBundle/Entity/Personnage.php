@@ -220,5 +220,19 @@ class Personnage
         var_dump("Bravo ! Vous êtes paul.");
     }
     
+    function __construct() {
+        $this->pa = 2;
+    }
+
+    
+    public function majStats(){
+        $this->stats = new Stats();
+        $this->stats->setPv($this->race->stats->getPv() + $this->classe->stats->getPv());
+        $this->stats->setAtt($this->race->stats->getAtt() + $this->classe->stats->getAtt());
+        $this->stats->setMov($this->race->stats->getMov() + $this->classe->stats->getMov());
+        $this->stats->setDef($this->race->stats->getDef() + $this->classe->stats->getDef());
+        return $this->stats;
+    }
+    
 }
 
