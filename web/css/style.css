@@ -1,0 +1,142 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 févr. 2017, 00:43:39
+    Author     : romain-ruperez
+*/
+
+
+body{
+    /*visibility: hidden;*/
+    background-color: #DEDEDE;
+}
+
+button{
+    position:relative;
+    border-radius: 0;
+    background-color: #6d6;
+    width:300px;
+    height:75px;
+    font-size: 3em;
+    line-height: 75px;
+    vertical-align: middle;
+    transition:0.5s;
+}
+
+button:hover{
+    background-color: rgba(0,199,27,1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.8);
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+
+form{
+    /*display: none;*/
+    position:relative;
+    background: linear-gradient(to bottom right, rgba(255,255,255,1), rgba(0,0,0,0.1));
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    padding: 20px;
+    transition:0.5s;
+    border-left: 1px solid rgba(255,255,255,0.8);
+    border-top: 1px solid rgba(255,255,255,0.8);
+}
+
+form:hover{
+    box-shadow: 0 0 7px rgba(0,0,0,0.9);
+}
+
+form > input{
+    background-color: rgba(255,58,13,0.9);
+    color: white;
+    transition:0.5s;
+    border-left: 1px solid white;
+}
+form > input:hover{
+    background-color: rgba(255,58,13,1);
+    color: white;
+    font-size:25px;
+}
+
+
+/*couleur des inputs*/
+.c1 {
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,0,0,0.6));
+
+}
+.c2 {
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,255,0,0.6));
+}
+.c3 {
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(0,0,255,0.6));
+}
+.c4 {
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,0,0.6));
+
+}
+
+
+
+
+
+
+
+#selection{
+    position:relative;
+    background: linear-gradient(to bottom right, rgba(255,255,255,1), rgba(0,0,0,0.1));
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    padding: 20px;
+    transition:0.5s;
+    border-left: 1px solid rgba(255,255,255,0.8);
+    border-top: 1px solid rgba(255,255,255,0.8);
+}
+
+#selection:hover{
+    box-shadow: 0 0 7px rgba(0,0,0,0.9);
+}
+
+#selection > input{
+    width:90%;
+
+    /*background-color: rgba(0,0,0,0.7);*/
+}
+
+#selection > input[type='text']{
+    /*background-color: rgba(255,255,255,0.4);*/
+    margin-bottom: 10px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(0,0,0,0.2);
+    transition:0.5s;
+}
+
+#selection > input[type='text']:hover{
+    background-color: white;
+    transition:0.5s;
+}
+
+#selection > input[type='text']:focus{
+
+
+    border-bottom: 1px solid black;
+}
+
+#selection > input[type='submit']{
+    background-color: rgba(255,58,13,0.9);
+    color: white;
+    transition:0.5s;
+    border-left: 1px solid white;
+}
+
+#selection > input[type='submit']:hover{
+    background-color: rgba(255,58,13,1);
+    color: white;
+    letter-spacing: 3px;
+    font-size:25px;
+}
+
