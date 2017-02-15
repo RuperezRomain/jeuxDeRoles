@@ -133,7 +133,6 @@ class Personnage
     public function setRace($race)
     {
         $this->race = $race;
-
         return $this;
     }
 
@@ -144,6 +143,7 @@ class Personnage
      */
     public function getRace()
     {
+        
         return $this->race;
     }
 
@@ -198,9 +198,9 @@ class Personnage
      * @param Personnage $cible
      */
     
-    public function attaquer(Personnage $cible){
-        
-    }
+//    public function attaquer(Personnage $cible){
+//        
+//    }
     
     /**
      * Changer la position initiale par les nouvelles coordonnées
@@ -227,10 +227,10 @@ class Personnage
     
     public function majStats(){
         $this->stats = new Stats();
-        $this->stats->setPv($this->race->stats->getPv() + $this->classe->stats->getPv());
-        $this->stats->setAtt($this->race->stats->getAtt() + $this->classe->stats->getAtt());
-        $this->stats->setMov($this->race->stats->getMov() + $this->classe->stats->getMov());
-        $this->stats->setDef($this->race->stats->getDef() + $this->classe->stats->getDef());
+        $this->stats->setPv($this->race->getStats()->getPv() + $this->classe->getStats()->getPv());
+        $this->stats->setAtt($this->race->getStats()->getAtt() + $this->classe->getStats()->getAtt());
+        $this->stats->setMov($this->race->getStats()->getMov() + $this->classe->getStats()->getMov());
+        $this->stats->setDef($this->race->getStats()->getDef() + $this->classe->getStats()->getDef());
         return $this->stats;
     }
     

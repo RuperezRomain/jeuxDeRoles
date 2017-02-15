@@ -3,10 +3,10 @@
     <button type="button">START</button>
 
     <form id="selection" method="POST" action="{{path('addPlayers')}}">
-        {% for i in 0..3 %}
-            <input class="{{ cycle(['c1','c2','c3','c4'],loop.index) }}"
+        {% for i in 1..4 %}
+            <input class="{{ cycle(['c1','c2','c3','c4'],loop.index0) }}"
                    type="text" 
-                   name="{{ cycle(['j1','j2','j3','j4'],loop.index) }}" 
+                   name="{{ cycle(['j1','j2','j3','j4'],loop.index0) }}" 
                    placeholder=" Email "/>
         {% endfor %}
         <input type="submit" value="Valider"/>

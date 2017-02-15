@@ -36,6 +36,32 @@ class DefaultController extends Controller {
     }
 
     /**
+     * @Route("/stats",name="statsInit")
+     */
+    public function creationStatsPerso(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $joueur = $request->getSession()->get("j" . strval($request->getSession()->get('actuel')));
+        $idStats = $joueur->getPersonnage()->getStats()->getId();
+        $stats = $em->find("AppBundle:Stats", $idStats);
+        $formStats = $this->createForm(StatsType::class, $stats);
+        //// Metohde retourne nombre 
+        $numRandom = $this->randomStats();
+        ///// Recup pour adition en twig 
+        $pv = $stats->getPv();
+        $att = $stats->getAtt();
+        $deff = $stats->getDef();
+        $mov = $stats->getMov();
+        return $this->render('default/selectStats.html.twig', array(
+                    "formulaire" => $formStats->createView(),
+                    'rd' => $numRandom,
+                    'pv' => $pv,
+                    'att' => $att,
+                    'def' => $deff,
+                    'mov' => $mov
+        ));
+    }
+
+    /**
      * @Route("/game", name="game")
      */
     public function getGameUI(Request $request) {
