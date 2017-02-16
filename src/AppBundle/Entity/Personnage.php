@@ -61,8 +61,18 @@ class Personnage
     private $pa;
 
 
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="positionH", type="integer")
+     */
     private $positionH;
     
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="positionV", type="integer")
+     */    
     private $positionV;
     
     /**
@@ -222,6 +232,9 @@ class Personnage
     
     function __construct() {
         $this->pa = 2;
+        $this->positionH = 0;
+        $this->positionV = 0;
+        
     }
 
     
@@ -232,6 +245,10 @@ class Personnage
         $this->stats->setMov($this->race->getStats()->getMov() + $this->classe->getStats()->getMov());
         $this->stats->setDef($this->race->getStats()->getDef() + $this->classe->getStats()->getDef());
         return $this->stats;
+    }
+    
+        public function __toString() {
+        return $this->getNom();
     }
     
 }

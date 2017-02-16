@@ -15,7 +15,7 @@ body{
 }
 
 button{
-    position:relative;
+    /*position:relative;*/
     border-radius: 0;
     background-color: #6d6;
     width:300px;
@@ -140,3 +140,35 @@ form > input:hover{
     font-size:25px;
 }
 
+table{
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+
+td{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    transition:0.1s;
+}
+td:hover{
+
+    background-color: blue;
+}
+.j1{
+    background-color: yellow;
+    border: 5px #6d6 outset;
+    
+}
+.j2{
+    background-color: green;
+
+}
+.j3{
+    background-color: pink;
+
+}
+.j4{
+    background-color: white;
+
+}

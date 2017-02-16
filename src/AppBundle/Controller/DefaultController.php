@@ -44,29 +44,31 @@ class DefaultController extends Controller {
         $idStats = $joueur->getPersonnage()->getStats()->getId();
         $stats = $em->find("AppBundle:Stats", $idStats);
         $formStats = $this->createForm(StatsType::class, $stats);
-        //// Metohde retourne nombre 
-        $numRandom = $this->randomStats();
-        ///// Recup pour adition en twig 
+//        //// Methode retourne nombre 
+//        $numRandom = $this->randomStats();
+        ///// Recup pour addition en twig 
         $pv = $stats->getPv();
         $att = $stats->getAtt();
         $deff = $stats->getDef();
         $mov = $stats->getMov();
-        return $this->render('default/selectStats.html.twig', array(
+        return $this->render('default/stats.html.twig', array(
                     "formulaire" => $formStats->createView(),
-                    'rd' => $numRandom,
                     'pv' => $pv,
                     'att' => $att,
                     'def' => $deff,
-                    'mov' => $mov
+                    'mov' => $mov,
+                    'j' => $joueur
         ));
     }
 
     /**
      * @Route("/game", name="game")
      */
-    public function getGameUI(Request $request) {
-        // replace this example code with whatever you need
-        return $this->render('default/game_ui.twig');
+    public function getGameUI(Request $r) {
+        
+        return $this->render('default/game_ui.html.twig', array(
+            "joueur" => $r->getSession()->get("j" . strval($r->getSession()->get('actuel')))
+        ));
     }
 
     /**

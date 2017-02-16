@@ -1,0 +1,30 @@
+body{
+    visibility: hidden;
+    background-color: rgba(255,255,255,0.8);
+}
+
+table{
+    position: relative;
+    border: 2px solid black;
+    background-color: lightgrey;
+}
+
+tr, td{
+    background-color: grey;
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+
+}
+
+#joueur, #log{
+    position: absolute;
+    background-color: olive;
+    width: 150px;
+    height: 500px;
+    border: 1px solid darkgreen;  
+}
+
+#log{
+    right: 0;
+}
