@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="personnage")
  * @ORM\Entity(repositoryClass="PersonnageRepository")
  */
-class Personnage
-{
+class Personnage {
+
     /**
      * @var int
      *
@@ -51,7 +51,7 @@ class Personnage
      * @ORM\JoinColumn(name="fk_classe", referencedColumnName="id")
      */
     private $classe;
-    
+
     /**
      *
      * @var int
@@ -60,28 +60,26 @@ class Personnage
      */
     private $pa;
 
-
     /**
      * @var int
      * 
      * @ORM\Column(name="positionH", type="integer")
      */
     private $positionH;
-    
+
     /**
      * @var int
      * 
      * @ORM\Column(name="positionV", type="integer")
-     */    
+     */
     private $positionV;
-    
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -92,8 +90,7 @@ class Personnage
      *
      * @return Personnage
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -104,8 +101,7 @@ class Personnage
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -116,8 +112,7 @@ class Personnage
      *
      * @return Personnage
      */
-    public function setStats($stats)
-    {
+    public function setStats($stats) {
         $this->stats = $stats;
 
         return $this;
@@ -128,8 +123,7 @@ class Personnage
      *
      * @return stdClass
      */
-    public function getStats()
-    {
+    public function getStats() {
         return $this->stats;
     }
 
@@ -140,8 +134,7 @@ class Personnage
      *
      * @return Personnage
      */
-    public function setRace($race)
-    {
+    public function setRace($race) {
         $this->race = $race;
         return $this;
     }
@@ -151,9 +144,8 @@ class Personnage
      *
      * @return stdClass
      */
-    public function getRace()
-    {
-        
+    public function getRace() {
+
         return $this->race;
     }
 
@@ -164,8 +156,7 @@ class Personnage
      *
      * @return Personnage
      */
-    public function setClasse($classe)
-    {
+    public function setClasse($classe) {
         $this->classe = $classe;
 
         return $this;
@@ -176,11 +167,10 @@ class Personnage
      *
      * @return stdClass
      */
-    public function getClasse()
-    {
+    public function getClasse() {
         return $this->classe;
     }
-    
+
     /**
      * Get pa
      *
@@ -189,7 +179,7 @@ class Personnage
     function getPa() {
         return $this->pa;
     }
-    
+
     /**
      * Set pa
      *
@@ -207,49 +197,49 @@ class Personnage
      * 
      * @param Personnage $cible
      */
-    
 //    public function attaquer(Personnage $cible){
 //        
 //    }
-    
+
     /**
      * Changer la position initiale par les nouvelles coordonnées
      * 
      * @param int $ligne
      * @param int $colonne
      */
-    public function seDeplacer(int $ligne, int $colonne){
+    public function seDeplacer(int $ligne, int $colonne) {
         $this->positionH = $ligne;
         $this->positionV = $colonne;
     }
-    
+
     /**
      * Methode pour mourrir
      */
-    public function paul(){
+    public function paul() {
         var_dump("Bravo ! Vous êtes paul.");
     }
-    
+
     function __construct() {
         $this->pa = 2;
         $this->positionH = 0;
         $this->positionV = 0;
-        
     }
 
-    
-    public function majStats(){
-        $this->stats = new Stats();
-        $this->stats->setPv($this->race->getStats()->getPv() + $this->classe->getStats()->getPv());
-        $this->stats->setAtt($this->race->getStats()->getAtt() + $this->classe->getStats()->getAtt());
-        $this->stats->setMov($this->race->getStats()->getMov() + $this->classe->getStats()->getMov());
-        $this->stats->setDef($this->race->getStats()->getDef() + $this->classe->getStats()->getDef());
+    public function majStats(Stats $stats = null) {
+        if ($stats == null) {
+            $this->stats = new Stats();
+            $this->stats->setPv($this->race->getStats()->getPv() + $this->classe->getStats()->getPv());
+            $this->stats->setAtt($this->race->getStats()->getAtt() + $this->classe->getStats()->getAtt());
+            $this->stats->setMov($this->race->getStats()->getMov() + $this->classe->getStats()->getMov());
+            $this->stats->setDef($this->race->getStats()->getDef() + $this->classe->getStats()->getDef());
+        } else {
+            $this->stats = $stats;
+        }
         return $this->stats;
     }
-    
-        public function __toString() {
+
+    public function __toString() {
         return $this->getNom();
     }
-    
-}
 
+}

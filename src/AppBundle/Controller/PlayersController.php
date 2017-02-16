@@ -63,20 +63,22 @@ class PlayersController extends Controller {
         return $this->redirectToRoute('createPerso');
     }
 
-    /**
+ /**
      * @Route("/stats/up", name="upStats")
      */
     public function upStats(Request $request) {
+        // On recup le Joueur
         $em = $this->getDoctrine()->getManager();
-        $stats = new Stats();
+        $joueur = $request->getSession()->get("j" . strval($request->getSession()->get('actuel')));
+        $stats = $em->getRepository("AppBundle:Stats")->find($joueur->getPersonnage()->getStats()->getId());
         $form = $this->createForm(StatsType::class, $stats);
         $form->handleRequest($request);
-
+//        $em->merge($joueur->getPersonnage(majStats($stats)));
         $em->merge($stats);
         $em->flush();
+
         return $this->redirect($this->generateUrl('switch'));
     }
-
     /**
      * @Route("/perso/create",name="savePersonnage")
      * @param Request $r
